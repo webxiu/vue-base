@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Forms from '@/views/Forms'
-import Tables from '@/views/Tables'
+import ComForm from '@/views/ComForm'
+import ComTable from '@/views/ComTable'
 import HeightLight from '@/views/HeightLight'
 import wangEditor from '@/components/wangEditor'
 
@@ -11,8 +11,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'forms',
-      component: Forms
+      name: 'ComForm',
+      component: ComForm
     },
     {
       path: '/wangEditor',
@@ -21,8 +21,8 @@ export default new Router({
     },
     {
       path: '/table',
-      name: 'tables',
-      component: Tables
+      name: 'ComTable',
+      component: ComTable
     },
     {
       path: '/heightlight',
