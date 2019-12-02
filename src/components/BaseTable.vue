@@ -50,13 +50,14 @@ export default {
     columnConfig: { required: true, type: Array, default: () => [] },
     pagination: { type: Boolean, default: true },
     getData: { type: Function, default: () => {} },
-    pageSizes: { type: Array, default: () => { return [5,10, 20, 50, 100] }},
+    pageSizes: { type: Array, default: () => { return [10, 20, 50, 100] }},
     total: { type: Number, default: 0 },
   },
   data() {
     return {
       limit: 10,
-      initPage: 1
+      initPage: 1,
+      props: this.props
     };
   },
   methods: {
