@@ -1,30 +1,29 @@
 <template>
   <div>
     <el-form ref="testForm" :model="testForm" :rules="rules" style="width:400px;margin: 50px auto;" label-width="100px">
-      <el-form-item label="用户名" prop="name">
-        <el-input v-model="testForm.name" style="width:100%" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="活动区域" prop="region">
-        <el-select v-model="testForm.region" style="width:100%" placeholder="请选择活动区域">
-          <el-option label="区域一" value="shanghai"></el-option>
-          <el-option label="区域二" value="beijing"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="请选择日期" prop="date">
-        <el-date-picker
-          v-model="testForm.date"
-          type="daterange"
-          align="right"
-          :unlink-panels="false"
-          value-format="yyyy-MM-dd"
-          clearable
-          range-separator="至"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
-          :picker-options="pickerOptions"
-          @focus="clearChioseDate" style="width:100%"
-        ></el-date-picker>
-      </el-form-item>
+      <template v-for="(item, key) in formCongfig.formItem">
+          <el-button v-if="item.type=='button'" :key="key" @click="bindThis(item.handle)">添加</el-button>
+        <el-form-item v-else :key="key" :label="item.label">
+          <el-input v-model="bingFormField[item.id]" v-if="item.type=='input'" :placeholder="item.placeholder" style="width:100%" autocomplete="off"></el-input>
+          <el-select v-model="bingFormField[item.id]" v-else-if="item.type=='select'" filterable :placeholder="item.placeholder" style="width:100%">
+            <el-option v-for="(optionItem, optionIndex) in item.options" :key="optionIndex" :label="optionItem.label" value="optionItem.value"></el-option>
+          </el-select>
+          <el-date-picker
+            v-model="bingFormField[item.id]" 
+            v-else-if="item.type=='datepicker'" 
+            type="daterange"
+            align="right"
+            :unlink-panels="false"
+            value-format="yyyy-MM-dd"
+            clearable
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期"
+            :picker-options="pickerOptions"
+            @focus="clearChioseDate" style="width:100%"
+          ></el-date-picker>
+        </el-form-item>
+      </template>
       <el-form-item>
         <el-button type="primary" @click="submitForm()">提交</el-button>
         <el-button @click="resetForm('testForm')">重置</el-button>
@@ -36,38 +35,20 @@
 <script>
 import { log } from "util";
 export default {
+  props:{
+    formCongfig: {
+      type: Object,
+      required: true,
+      default: () => {}
+    }
+  },
   data() {
     let self = this;
     return {
-      gridData: [
-        {
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄"
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄"
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄"
-        }
-      ],
+      bingFormField: {},
       dialogTableVisible: false,
       dialogFormVisible: false,
-      testForm: {
-        name: "",
-        region: "",
-        date: []
-      },
+      
       formLabelWidth: "120px",
       choiceDate: "",
       rules:{
@@ -111,7 +92,7 @@ export default {
     submitForm() {
         this.$refs['testForm'].validate((valid) => {
           if (valid) {
-            alert('submit!'+ JSON.stringify(this.testForm));
+            alert('submit!'+ JSON.stringify(this.bingFormField));
           } else {
             console.log('error submit!!');
             return false;
