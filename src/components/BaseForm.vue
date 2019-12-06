@@ -1,16 +1,39 @@
 <template>
   <div>
-    <el-form ref="testForm" :model="testForm" :rules="rules" style="width:400px;margin: 50px auto;" label-width="100px">
+    <el-form
+      ref="testForm"
+      :model="testForm"
+      :rules="rules"
+      style="width:400px;margin: 50px auto;"
+      label-width="100px"
+    >
       <template v-for="(item, key) in formCongfig.formItem">
-          <el-button v-if="item.type=='button'" :key="key" @click="bindThis(item.handle)">添加</el-button>
+        <el-button v-if="item.type=='button'" :key="key" @click="bindThis(item.handle)">添加</el-button>
         <el-form-item v-else :key="key" :label="item.label">
-          <el-input v-model="bingFormField[item.id]" v-if="item.type=='input'" :placeholder="item.placeholder" style="width:100%" autocomplete="off"></el-input>
-          <el-select v-model="bingFormField[item.id]" v-else-if="item.type=='select'" filterable :placeholder="item.placeholder" style="width:100%">
-            <el-option v-for="(optionItem, optionIndex) in item.options" :key="optionIndex" :label="optionItem.label" value="optionItem.value"></el-option>
+          <el-input
+            v-model="bingFormField[item.id]"
+            v-if="item.type=='input'"
+            :placeholder="item.placeholder"
+            style="width:100%"
+            autocomplete="off"
+          ></el-input>
+          <el-select
+            v-model="bingFormField[item.id]"
+            v-else-if="item.type=='select'"
+            filterable
+            :placeholder="item.placeholder"
+            style="width:100%"
+          >
+            <el-option
+              v-for="(optionItem, optionIndex) in item.options"
+              :key="optionIndex"
+              :label="optionItem.label"
+              value="optionItem.value"
+            ></el-option>
           </el-select>
           <el-date-picker
-            v-model="bingFormField[item.id]" 
-            v-else-if="item.type=='datepicker'" 
+            v-model="bingFormField[item.id]"
+            v-else-if="item.type=='datepicker'"
             type="daterange"
             align="right"
             :unlink-panels="false"
@@ -20,7 +43,8 @@
             start-placeholder="开始日期"
             end-placeholder="结束日期"
             :picker-options="pickerOptions"
-            @focus="clearChioseDate" style="width:100%"
+            @focus="clearChioseDate"
+            style="width:100%"
           ></el-date-picker>
         </el-form-item>
       </template>
@@ -35,7 +59,7 @@
 <script>
 import { log } from "util";
 export default {
-  props:{
+  props: {
     formCongfig: {
       type: Object,
       required: true,
@@ -48,13 +72,24 @@ export default {
       bingFormField: {},
       dialogTableVisible: false,
       dialogFormVisible: false,
-      
+
       formLabelWidth: "120px",
       choiceDate: "",
-      rules:{
-        name: [{ required: true, message: '请输入用户名', trigger: ['change', 'blur'] }],
-        region: [{ required: true, message: '请选择活动', trigger: ['change', 'blur'] }],
-        date: [{ required: true, message: '请选择日期', trigger: ['change', 'blur'] }]
+      testForm:{},
+      rules: {
+        name: [
+          {
+            required: true,
+            message: "请输入用户名",
+            trigger: ["change", "blur"]
+          }
+        ],
+        region: [
+          { required: true, message: "请选择活动", trigger: ["change", "blur"] }
+        ],
+        date: [
+          { required: true, message: "请选择日期", trigger: ["change", "blur"] }
+        ]
       },
       pickerOptions: {
         disabledDate(time) {
@@ -90,18 +125,18 @@ export default {
       this.choiceDate = "";
     },
     submitForm() {
-        this.$refs['testForm'].validate((valid) => {
-          if (valid) {
-            alert('submit!'+ JSON.stringify(this.bingFormField));
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
-      },
-      resetForm() {
-        this.$refs['testForm'].resetFields();
-      }
+      this.$refs['testForm'].validate(valid => {
+        if (valid) {
+          alert("submit!" + JSON.stringify(this.bingFormField));
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
+    },
+    resetForm() {
+      this.$refs['testForm'].resetFields();
+    }
   }
 };
 </script>

@@ -6,9 +6,11 @@
 
 <script>
 import BaseForm from "@/components/BaseForm";
+import formMixins from "./mixins/formMixins";
 export default {
   name: "Forms",
   components: { BaseForm },
+  mixins:[formMixins],
   data() {
     return {
       formCongfig: {
@@ -29,6 +31,14 @@ export default {
       }
     };
   },
-  
+  mounted(){
+    this.getInfo()
+  },
+  methods: {
+    getInfo(){
+      console.log('===111',this.formCongfig);
+      alert('组件方法后执行:'+'11111')
+    }
+  }
 };
 </script>
