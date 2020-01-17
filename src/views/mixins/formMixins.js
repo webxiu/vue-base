@@ -9,7 +9,7 @@ export default {
     getMessage(){
       console.log('===222',this.formCongfig);
       
-      alert('mixins方法先执行:'+'22222')
+      console.log('mixins方法先执行:'+'22222')
     }
   }
 }

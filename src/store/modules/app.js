@@ -1,19 +1,19 @@
 const state = {
-  name: 'setting'
+  role: '管理员'
 }
 
 const mutations = {
-  SET_NAME: (state) => {
-    state.name = state
+  SET_ROLE: (state,role) => {
+    state.role = role
   },
 }
 
 const actions = {
-  setName({commit, dispatch},setting){
+  setName({commit, dispatch},role){
     return new Promise((resolve, reject)=>{
       // getInfo(state.token).then(async(response) => {
       //   const { data } = response
-      //   commit('SET_NAME', data.username)
+      //   commit('SET_ROLE', data.userrole)
       //   commit('SET_LOGININFO', data)
       //   setUserInfo(data) // 存储cookie用户信息
       //   resolve(data)
@@ -21,7 +21,7 @@ const actions = {
       // }).catch(error => {
       //   reject(error)
       // })
-      commit('SET_NAME',setting)
+      commit('SET_ROLE',role)
     })
       
   }

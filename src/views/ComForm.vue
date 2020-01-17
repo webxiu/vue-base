@@ -37,7 +37,7 @@ export default {
   methods: {
     getInfo(){
       console.log('===111',this.formCongfig);
-      alert('组件方法后执行:'+'11111')
+      console.log('组件方法后执行:'+'11111')
     }
   }
 };
