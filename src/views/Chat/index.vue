@@ -4,6 +4,8 @@
       <div class="list">
         <p>11111111111111</p>
         <p>11111111111111</p>
+        <Home />
+        <Detail />
       </div>
       <div class="input-box">
         <input type="text" class="input" placeholder="请输入内容" />
@@ -14,6 +16,7 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {};
@@ -25,17 +28,17 @@ export default {
       ws.onopen = function() {
         // Web Socket 已连接上，使用 send() 方法发送数据
         ws.send("发送数据");
-        alert("数据发送中...");
+        console.log("数据发送中...");
       };
 
       ws.onmessage = function(evt) {
         var received_msg = evt.data;
-        alert("数据已接收...");
+        console.log("数据已接收...");
       };
 
       ws.onclose = function() {
         // 关闭 websocket
-        alert("连接已关闭...");
+        console.log("连接已关闭...");
       };
   },
   methods: {

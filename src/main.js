@@ -10,6 +10,9 @@ import 'element-ui/lib/theme-chalk/index.css';
 import highlight from './directive/highlight';
 Vue.directive('highlight',highlight)
 
+import Hailen from "./packages";
+Vue.use(Hailen)
+
 Vue.use(ElementUI)
 Vue.config.productionTip = false
 

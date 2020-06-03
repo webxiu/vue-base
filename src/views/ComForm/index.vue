@@ -29,7 +29,7 @@
 
 <script>
 import BaseForm from "@/components/BaseForm";
-import formMixins from "./mixins/formMixins";
+import formMixins from "../mixins/formMixins";
 
 import Clipic from "clipic";
 const clipic = new Clipic();
