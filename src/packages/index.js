@@ -15,6 +15,7 @@ const components = files.keys().reduce((file, path) => {
 const hailen = {
   install: function (Vue) {
     components.forEach(c => {
+      if (!c.name) throw new Error("required a components name field(such as: name:'xxx')")
       Vue.component(c.name, c);
     });
   }

@@ -29,5 +29,11 @@ export const routes = [
     name: 'Chat',
     meta: { title: '聊天室', icon: 'message' },
     component: () => import('@/views/Chat')
+  },
+  {
+    path: '/loading',
+    name: 'Loading',
+    meta: { title: '测试页', icon: 'message' },
+    component: () => import('@/views/Loading')
   }
 ]

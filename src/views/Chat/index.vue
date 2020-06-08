@@ -12,6 +12,10 @@
         <button class="btn" @click="send">发送</button>
       </div>
     </div>
+    <div>
+        <svg-icon icon-class="icon_channel" />
+      <Abc />
+    </div>
   </div>
 </template>
 
