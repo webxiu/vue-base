@@ -3,7 +3,7 @@
     <div class="wrap">
       <div class="list">
         <p>11111111111111</p>
-        <p>11111111111111</p>
+        <p class="test-color">11111111111111</p>
         <Home />
         <Detail />
       </div>
@@ -53,7 +53,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .chat {
   display: flex;
   justify-content: center;
@@ -64,7 +64,7 @@ export default {
 .list {
   height: 300px;
   padding: 15px;
-  background: #f6f;
+  background: $bg;
   border: 1px solid #f7f7f7;
 }
 .input-box {

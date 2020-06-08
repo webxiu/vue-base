@@ -1,0 +1,18 @@
+// 只需要在buil/utils.js中配置
+// scss: generateLoaders('sass').concat( //       {
+//     loader: 'sass-resources-loader',
+//     options: {
+//       resources: path.resolve(__dirname, '../src/assets/your.scss')
+//     }
+//   }
+// )
+
+
+// 全局变量
+$bg: #00f; 
+
+
+// 全局类名
+.test-color{
+  color: #b60;
+}
