@@ -53,11 +53,20 @@
         <el-button @click="resetForm">重置</el-button>
       </el-form-item>
     </el-form>
+
+    <el-dialog v-el-drag title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
+      <span>这是一段信息</span>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import { log } from "util";
+import elDrag from '@/directive/el-drag'
 export default {
   props: {
     formCongfig: {
@@ -66,16 +75,17 @@ export default {
       default: () => {}
     }
   },
+  directives: {elDrag},
   data() {
     let self = this;
     return {
       bingFormField: {},
       dialogTableVisible: false,
       dialogFormVisible: false,
-
+      dialogVisible: false,
       formLabelWidth: "120px",
       choiceDate: "",
-      testForm:{},
+      testForm: {},
       rules: {
         name: [
           {
@@ -125,7 +135,7 @@ export default {
       this.choiceDate = "";
     },
     submitForm() {
-      this.$refs['testForm'].validate(valid => {
+      this.$refs["testForm"].validate(valid => {
         if (valid) {
           alert("submit!" + JSON.stringify(this.bingFormField));
         } else {
@@ -135,7 +145,11 @@ export default {
       });
     },
     resetForm() {
-      this.$refs['testForm'].resetFields();
+      this.dialogVisible = true;
+      this.$refs["testForm"].resetFields();
+    },
+    handleClose(){
+      this.dialogVisible = false;
     }
   }
 };
