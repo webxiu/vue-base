@@ -6,11 +6,13 @@ import router from './router'
 import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
-import highlight from './directive/highlight';
-import Hailen from "./packages";
 import '@/icons'
+import Hailen from "@/packages";
+import highlight from '@/directive/highlight';
+import imgLazy from '@/directive/imgLazy'
 
 Vue.directive('highlight',highlight)
+Vue.directive('imgLazy', imgLazy)
 
 Vue.use(Hailen)
 Vue.use(ElementUI)

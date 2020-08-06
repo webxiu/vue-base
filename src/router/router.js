@@ -35,5 +35,11 @@ export const routes = [
     name: 'Loading',
     meta: { title: '测试页', icon: 'message' },
     component: () => import('@/views/Loading')
+  },
+  {
+    path: '/img-list',
+    name: 'ImgList',
+    meta: { title: '列表页', icon: 'message' },
+    component: () => import('@/views/ImgList')
   }
 ]
