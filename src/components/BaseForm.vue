@@ -8,18 +8,23 @@
       label-width="100px"
     >
       <template v-for="(item, key) in formCongfig.formItem">
-        <el-button v-if="item.type=='button'" :key="key" @click="bindThis(item.handle)">添加</el-button>
+        <el-button
+          v-if="item.type == 'button'"
+          :key="key"
+          @click="bindThis(item.handle)"
+          >添加</el-button
+        >
         <el-form-item v-else :key="key" :label="item.label">
           <el-input
             v-model="bingFormField[item.id]"
-            v-if="item.type=='input'"
+            v-if="item.type == 'input'"
             :placeholder="item.placeholder"
             style="width:100%"
             autocomplete="off"
           ></el-input>
           <el-select
             v-model="bingFormField[item.id]"
-            v-else-if="item.type=='select'"
+            v-else-if="item.type == 'select'"
             filterable
             :placeholder="item.placeholder"
             style="width:100%"
@@ -33,7 +38,7 @@
           </el-select>
           <el-date-picker
             v-model="bingFormField[item.id]"
-            v-else-if="item.type=='datepicker'"
+            v-else-if="item.type == 'datepicker'"
             type="daterange"
             align="right"
             :unlink-panels="false"
@@ -54,11 +59,19 @@
       </el-form-item>
     </el-form>
 
-    <el-dialog v-el-drag title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
+    <el-dialog
+      v-drag
+      title="提示"
+      :visible.sync="dialogVisible"
+      width="30%"
+      :before-close="handleClose"
+    >
       <span>这是一段信息</span>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+        <el-button type="primary" @click="dialogVisible = false"
+          >确 定</el-button
+        >
       </span>
     </el-dialog>
   </div>
@@ -66,7 +79,6 @@
 
 <script>
 import { log } from "util";
-import elDrag from '@/directive/el-drag'
 export default {
   props: {
     formCongfig: {
@@ -75,7 +87,6 @@ export default {
       default: () => {}
     }
   },
-  directives: {elDrag},
   data() {
     let self = this;
     return {
@@ -148,7 +159,7 @@ export default {
       this.dialogVisible = true;
       this.$refs["testForm"].resetFields();
     },
-    handleClose(){
+    handleClose() {
       this.dialogVisible = false;
     }
   }

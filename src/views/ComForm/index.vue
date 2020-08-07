@@ -78,6 +78,9 @@ export default {
   },
   mounted() {
     this.getInfo();
+    if (window.performance.navigation.type ===1) {
+      alert('刷新')
+    }
   },
   methods: {
     getInfo() {

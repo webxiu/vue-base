@@ -1,29 +1,30 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import App from './App'
-import router from './router'
-import store from './store'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css';
-import '@/icons'
+import Vue from "vue";
+import App from "./App";
+import router from "./router";
+import store from "./store";
+import ElementUI from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
+import "@/icons";
+import "@/directive";
 import Hailen from "@/packages";
-import highlight from '@/directive/highlight';
-import imgLazy from '@/directive/imgLazy'
+// import highlight from "@/directive/highlight";
+// import imgLazy from "@/directive/imgLazy";
 
-Vue.directive('highlight',highlight)
-Vue.directive('imgLazy', imgLazy)
+// Vue.directive("highlight", highlight);
+// Vue.directive("imgLazy", imgLazy);
 
-Vue.use(Hailen)
-Vue.use(ElementUI)
+Vue.use(Hailen);
+Vue.use(ElementUI);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
+  el: "#app",
   router,
   store,
   components: { App },
-  template: '<App/>'
-})
+  template: "<App/>"
+});
