@@ -8,7 +8,7 @@
 export default {
   data() {
     return {};
-  }
+  },
 };
 </script>
 
@@ -54,7 +54,7 @@ html {
   overflow: hidden;
   display: flex;
   justify-content: center;
-  align-itrems: center;
+  align-items: center;
 }
 
 html {
